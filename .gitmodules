@@ -1,0 +1,3 @@
+[submodule "SRModCore"]
+	path = SRModCore
+	url = ../../bookdude13/SRModCore
