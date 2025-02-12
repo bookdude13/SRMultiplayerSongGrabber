@@ -18,6 +18,8 @@ For Synth Riders [PCVR]
 ## Credits
 Download icon obtained from https://uxwing.com/
 
+Original MultiplayerSongGrabber mod by Moinn: https://github.com/Goinn/MultiplayerSongGrabber
+
 ## Disclaimer
 This mod is not related to Synth Riders Devs or Kluge Interactive.
 
