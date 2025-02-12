@@ -102,16 +102,6 @@ namespace SRMultiplayerSongGrabber
             Refresh();
         }
 
-        private IEnumerator WaitForSelectedTrack()
-        {
-            var ssmInstance = Il2CppSynth.SongSelection.SongSelectionManager.GetInstance;
-            while (ssmInstance == null || ssmInstance.SelectedGameTrack == null)
-            {
-                logger.Msg("Waiting for selected track");
-                yield return null;
-            }
-        }
-
         /// <summary>
         /// The last requested song hash from multiplayer events. This _may_ match with CurrentSongHash if we have the song
         /// locally. Otherwise it'll be the hash of the unavailable song.
@@ -174,8 +164,6 @@ namespace SRMultiplayerSongGrabber
 
         private IEnumerator RefreshCo()
         {
-            yield return WaitForSelectedTrack();
-
             if (!IsSongMissingAndDownloadable(out string songHash))
             {
                 synthUIButton.SetButtonDisabled(true);
