@@ -13,5 +13,5 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 //[assembly: Guid("2a3ffec0-c394-42df-9371-ece6a0a2d05e")]
 
-[assembly: MelonInfo(typeof(SRMultiplayerSongGrabber.SRMultiplayerSongGrabber), "SRMultiplayerSongGrabber", "1.0.1", "Moinn+bookdude13", "https://github.com/bookdude13/SRMultiplayerSongGrabber")]
+[assembly: MelonInfo(typeof(SRMultiplayerSongGrabber.SRMultiplayerSongGrabber), "SRMultiplayerSongGrabber", "2.0.0", "Moinn+bookdude13", "https://github.com/bookdude13/SRMultiplayerSongGrabber")]
 [assembly: MelonGame("Kluge Interactive", "SynthRiders")]

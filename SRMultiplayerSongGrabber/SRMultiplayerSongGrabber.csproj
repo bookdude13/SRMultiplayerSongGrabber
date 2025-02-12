@@ -6,14 +6,13 @@
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
-    <Version>2.0.0.0</Version>
     <AssemblyTitle>SRMultiplayerSongGrabber</AssemblyTitle>
     <Product>SRMultiplayerSongGrabber</Product>
     <Description>Download missing custom songs for Synth Riders</Description>
     <Copyright>Copyright © 2025</Copyright>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.1.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0.0</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <SynthRidersDir>C:\Program Files (x86)\Steam\steamapps\common\SynthRiders</SynthRidersDir>
   </PropertyGroup>
