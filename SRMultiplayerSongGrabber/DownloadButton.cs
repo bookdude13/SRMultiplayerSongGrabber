@@ -27,7 +27,6 @@ namespace SRMultiplayerSongGrabber
 
         private GameObject gameObject;
         private SynthUIButton synthUIButton;
-        private object _currentRefreshCo;
         private string? _currentDownloadHash;
 
         public DownloadButton(SRLogger logger)
@@ -44,33 +43,29 @@ namespace SRMultiplayerSongGrabber
             var songInfoWrap = bottomPanel.Find("Song Info Wrap");
             var favoriteWrap = songInfoWrap.transform.Find("Favorite Wrap");
             var volumeUp = mpRoomPanel.transform.Find("MainPanel/BottomPanel/VolumeControl/Arrow Up");
-            //UnityUtil.LogComponentsRecursive(logger, volumeUp);
+            
+            // Settings button in upper right
+            var bigSettingsBtn = mpRoomPanel.transform.Find("Title Bar/Settings Button");
 
             logger.Msg("Creating download button");
 
             // Use the button from Arrow Up since it's set up cleaner, but
             // use the size and relative position of the favorites button.
-            gameObject = GameObject.Instantiate(volumeUp, favoriteWrap.parent).gameObject;
-            gameObject.transform.position = favoriteWrap.position + new Vector3(-0.8f, -0.25f, 0f);
+            gameObject = GameObject.Instantiate(bigSettingsBtn, favoriteWrap.parent).gameObject;
 
             synthUIButton = gameObject.GetComponent<SynthUIButton>();
 
-            var bg = gameObject.transform.Find("bg").GetComponent<Image>();
+            var bg = gameObject.transform.Find("BG").GetComponent<Image>();
+            var bgMixedReality = gameObject.transform.Find("BG MR").GetComponent<Image>();
 
-            // BG should match with favorites shape (basic hex)
-            //var favBackground = favoriteWrap.Find("BG").GetComponent<Image>();
-            //bg.sprite = favBackground.sprite;
-
-            // Remove outline and icon for now. TODO replace icon w/ dl icon
-            //GameObject.Destroy(gameObject.transform.Find("outline").gameObject);
-            //GameObject.Destroy(gameObject.transform.Find("icon").gameObject);
-            var outline = gameObject.transform.Find("outline").GetComponent<Image>();
+            // Remove outline, replace icon
+            var outline = gameObject.transform.Find("Outline").GetComponent<Image>();
             outline.enabled = false;
 
-            var icon = gameObject.transform.Find("icon").GetComponent<Image>();
+            var icon = gameObject.transform.Find("Icon").GetComponent<Image>();
             var downloadSprite = UnityUtil.CreateSpriteFromAssemblyResource(logger, Assembly.GetExecutingAssembly(), "SRMultiplayerSongGrabber.Resources.document-download-icon.png");
             icon.sprite = downloadSprite;
-            //icon.enabled = false;
+            icon.color = Color.white;
 
             // Stop text from being changed from localization running
             var l8ns = gameObject.GetComponentsInChildren<Il2CppSynth.Utils.LocalizationHelper>();
@@ -101,7 +96,8 @@ namespace SRMultiplayerSongGrabber
             gameObject.transform.SetParent(noSongFoundObj.transform, true);
 
             // Set position explicitly, to make it consistent and easy to change
-            gameObject.transform.position = new Vector3(0f, 0.31f, 16.41f); // 2.65
+            gameObject.transform.position = new Vector3(3f, 0.31f, 16.41f);
+            gameObject.transform.localScale *= 0.7f;
 
             Refresh();
         }
@@ -129,11 +125,6 @@ namespace SRMultiplayerSongGrabber
 
         public void Refresh()
         {
-            //if (_currentRefreshCo != null)
-            //{
-            //    MelonCoroutines.Stop(_currentRefreshCo);
-            //}
-            //_currentRefreshCo = MelonCoroutines.Start(RefreshCo());
             MelonCoroutines.Start(RefreshCo());
         }
 
@@ -220,6 +211,9 @@ namespace SRMultiplayerSongGrabber
             _currentDownloadHash = songHash;
             logger.Msg($"Download clicked. Hash is {songHash}");
             MelonCoroutines.Start(ZDownloader.GetSongWithHash(logger, songHash, OnDownloadSuccess, OnDownloadFail));
+
+            // Prevent another attempt unless we fail
+            synthUIButton.enabled = false;
         }
 
         private void OnDownloadSuccess()
@@ -233,13 +227,12 @@ namespace SRMultiplayerSongGrabber
         private void OnDownloadFail()
         {
             ResetState();
-
-            // TODO - disable button when pressed, re-enable here to allow retry
         }
 
         private void ResetState()
         {
             _currentDownloadHash = null;
+            synthUIButton.enabled = true;
         }
     }
 }
