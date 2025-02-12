@@ -7,14 +7,22 @@
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     <Version>2.0.0.0</Version>
-    <Product>Trashbin</Product>
+    <AssemblyTitle>SRMultiplayerSongGrabber</AssemblyTitle>
+    <Product>SRMultiplayerSongGrabber</Product>
     <Description>Download missing custom songs for Synth Riders</Description>
     <Copyright>Copyright © 2025</Copyright>
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <FileVersion>1.0.1.0</FileVersion>
     <Version>1.0.1.0</Version>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <SynthRidersDir>C:\Program Files (x86)\Steam\steamapps\common\SynthRiders</SynthRidersDir>
   </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\document-download-icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SRModCore\SRModCore\SRModCore.csproj" />
@@ -68,6 +76,12 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>$(SynthRidersDir)\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>$(SynthRidersDir)\MelonLoader\Il2CppAssemblies\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Il2CppPhoton3Unity3D">
+      <HintPath>$(SynthRidersDir)\MelonLoader\Il2CppAssemblies\Il2CppPhoton3Unity3D.dll</HintPath>
     </Reference>
   </ItemGroup>
 
