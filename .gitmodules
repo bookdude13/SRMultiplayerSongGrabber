@@ -1,3 +1,6 @@
 [submodule "SRModCore"]
 	path = SRModCore
 	url = ../../bookdude13/SRModCore
+[submodule "SRTimestampManager"]
+	path = SRTimestampManager
+	url = ../../bookdude13/SRTimestampManager.git
