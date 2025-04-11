@@ -38,13 +38,6 @@ namespace SRMultiplayerSongGrabber
         /// </summary>
         private void SetupDownloadButton()
         {
-            if (_downloadButton != null)
-            {
-                // Already set up, so just needs a refresh
-                _downloadButton.Refresh();
-                return;
-            }
-
             Logger.Msg("Setting up download button");
             var mpRoomPanel = GameObject.Find("Main Stage Prefab/Z-Wrap/Multiplayer/RoomPanel/Scale Wrap/MultiplayerRoomPanel");
             _downloadButton = new DownloadButton(Logger);
