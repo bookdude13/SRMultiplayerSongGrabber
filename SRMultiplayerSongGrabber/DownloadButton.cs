@@ -198,7 +198,7 @@ namespace SRMultiplayerSongGrabber
 
             _currentDownloadHash = songHash;
             logger.Msg($"Download clicked. Hash is {songHash}");
-            MelonCoroutines.Start(ZDownloader.GetSongWithHash(logger, songHash, OnDownloadSuccess, OnDownloadFail));
+            MelonCoroutines.Start(CustomDownloaderUnity.TryGetSongWithHash(logger, songHash, OnDownloadSuccess, OnDownloadFail));
 
             // Prevent another attempt unless we fail
             synthUIButton.enabled = false;

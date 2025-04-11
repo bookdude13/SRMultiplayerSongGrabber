@@ -6,7 +6,7 @@ set MOD_NAME="SRMultiplayerSongGrabber"
 set VERSION=%1
 
 echo "Building release..."
-python.exe SRModCore\build.py --clean --tag -n "%MOD_NAME%" -c Release %VERSION% build_files.txt || goto :ERROR
+python.exe SRModCore\build.py --clean --tag -n "%MOD_NAME%" --dotnet-version=net6.0 -c Release %VERSION% build_files.txt || goto :ERROR
 
 echo "Done"
 goto :EOF

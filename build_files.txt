@@ -1,2 +1,5 @@
 SRModCore.dll
 SRMultiplayerSongGrabber.dll
+sr_timestamp_mapping.json
+SRCustomLib.dll
+SRTimestampLib.dll
